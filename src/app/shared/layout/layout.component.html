@@ -1,0 +1,73 @@
+<div class="layout-container">
+  <aside [ngClass]="{ 'active': isActive }">
+    <header>
+      <a href="/">
+        <img src="https://otruyen.cc/logo/logo-otruyen-1.png" [ngClass]="{ 'd-none invisible': isActive }">
+      </a>
+      <button class="header_collspace" (click)="toggleActive()">
+        <img src="/assets/icon/Collapse.webp" *ngIf="isActive ; else closeImg">
+        <ng-template #closeImg>
+          <img src="/assets/icon/Expand.svg">
+        </ng-template>
+      </button>
+    </header>
+    <nav>
+      <a href="" class="nav_item active">
+        <i class="eva eva-home"></i>
+        <span>
+          Trang chủ
+        </span>
+      </a>
+      <a href="" class="nav_item">
+        <i class="eva eva-book-open"></i>
+        <span>
+          Truyện mới
+        </span>
+      </a>
+      <a href="" class="nav_item">
+        <i class="eva eva-activity"></i>
+        <span>
+          Đang phát hành
+        </span>
+      </a>
+      <a href="" class="nav_item">
+        <i class="eva eva-done-all"></i>
+        <span>
+          Hoàn thành
+        </span>
+      </a>
+      <div href="" class="nav_item justify-content-between" (click)="toggletypeBox()">
+        <div>
+          <i class="eva eva-pantone"></i>
+          <span class="type-aside">
+            Thể loại
+          </span>
+        </div>
+        <i class="eva eva-arrow-ios-downward"></i>
+      </div>
+      <div class="type-box" [ngClass]="{'active': typeBox}">
+        <ul>
+          <li *ngFor="let type of Type"><a href="" class="  ">{{type.name}}</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+  <main class="content">
+    <form action="" class="search-header">
+      <label class="box-search" for="search">
+        <i class="eva eva-search"></i>
+        <input type="text" placeholder="Tìm kiếm truyện" id="search">
+      </label>
+    </form>
+    <div class="container">
+      <div class="wapper">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <app-loading></app-loading>
+    </main>
+</div>
+
+
+
+
